@@ -26,6 +26,25 @@ while True:
         continue 
     
     letras_adivinhadas.append(letra)
+    
+    if letra in palavra_sorteada:
+        lista = []
+        for indice in range(len(palavra_sorteada)):
+            if letra == palavra_sorteada[indice]:
+                lista.append(letra)
+            else:
+                lista.append(palavra_escondida[indice])
+        palavra_escondida = ''.join(lista)
+        
+    else:
+        max_tentativas -=1
+        print('Letra não encontrada. Você tem mais {max_tentativas} tentativas')
+        
+    if palavra_escondida == palavra_sorteada:
+        print('Parabéns, você ganhou!')
+        break
+    elif max_tentativas == 0:
+        print('Você perdeu. A palavra era {palavra_sorteada}')
 
 
 
