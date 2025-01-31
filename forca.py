@@ -7,7 +7,7 @@ palavras = ['python', 'programacao', 'computador', 'aula']
 palavra_sorteada = random.choice(palavras)
 
 #criar string com traços que representam letras
-palavra_escondida = '-' * len(palavra_sorteada)
+palavra_escondida = '_' * len(palavra_sorteada)
 
 #criar lista vazia para armazenar letras utilizadas 
 letras_adivinhadas = []
@@ -18,7 +18,7 @@ while True:
     #mostras palavra escondida 
     print(palavra_escondida)
     
-    letra = input('Digite uma letra: ')
+    letra = input('Digite uma letra: ').lower()
     
     #verificar letra digitada
     if letra in letras_adivinhadas:
@@ -28,23 +28,22 @@ while True:
     letras_adivinhadas.append(letra)
     
     if letra in palavra_sorteada:
-        lista = []
+        lista = list(palavra_escondida)
         for indice in range(len(palavra_sorteada)):
             if letra == palavra_sorteada[indice]:
-                lista.append(letra)
-            else:
-                lista.append(palavra_escondida[indice])
+                lista[indice] = letra
         palavra_escondida = ''.join(lista)
-        
+                
     else:
         max_tentativas -=1
-        print('Letra não encontrada. Você tem mais {max_tentativas} tentativas')
+        print(f'Letra não encontrada. Você tem mais {max_tentativas} tentativas')
         
     if palavra_escondida == palavra_sorteada:
         print('Parabéns, você ganhou!')
         break
     elif max_tentativas == 0:
         print('Você perdeu. A palavra era {palavra_sorteada}')
+        break
 
 
 
