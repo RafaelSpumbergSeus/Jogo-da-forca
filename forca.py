@@ -42,7 +42,7 @@ while True:
         print('Parabéns, você ganhou!')
         break
     elif max_tentativas == 0:
-        print('Você perdeu. A palavra era {palavra_sorteada}')
+        print(f'Você perdeu. A palavra era {palavra_sorteada}')
         break
 
 
